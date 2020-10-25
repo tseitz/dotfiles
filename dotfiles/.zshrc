@@ -1,3 +1,8 @@
+# import private env variables
+parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
+
+source $parent_path/.zshrc-env-vars
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -101,22 +106,18 @@ alias ls="ls -al --color=auto"
 alias open="nautilus"
 
 # Remove % on hyper term startup (not in use atm)
-# unsetopt PROMPT_SP
+unsetopt PROMPT_SP
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# spotify
-export SPOTIFY_CLIENT_ID=7799af3657b64bd58271582d8455a262
-export SPOTIFY_CLIENT_SECRET=3e55e1728b51476a89d033cac17856d9
 
 # audius
 export AUDIUS_REMOTE_DEV_HOST=localhost
 
 
-# testing cd script
 # cd up to n dirs
 # using:  cd.. 10   cd.. dir
 function cd_up() {
@@ -125,8 +126,8 @@ function cd_up() {
       cd $( pwd | sed -r "s|(.*/$1[^/]*/).*|\1|" )     # search dir_name in current path, if found - cd to it
       ;;                                               # if not found - not cd
     *)
-      cd $(printf "%0.0s ../" $(seq 1 $1));             # cd ../../../../  (N dirs)
+      cd $(printf "%0.0s../" $(seq 1 $1));             # cd ../../../../  (N dirs)
     ;;
   esac
 }
-alias 'cd ..'='cd_up'                                # can not name function 'cd..'
+alias 'cd..'='cd_up'                                # can not name function 'cd..'
