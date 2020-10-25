@@ -1,7 +1,9 @@
 # import private env variables
-parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
+# parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
+# TODO: Fix this, should be dynamic but haven't figured out reading path from symlink
+dotfiles_path="/home/tseitz/t-configs/dotfiles"
 
-source $parent_path/.zshrc-env-vars
+source $dotfiles_path/.zshrc-env-vars
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
