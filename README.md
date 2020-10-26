@@ -1,0 +1,1 @@
+This repo syncs my configs and prettifiers for my personal workstations :)
