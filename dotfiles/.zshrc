@@ -119,6 +119,9 @@ export NVM_DIR="$HOME/.nvm"
 # audius
 export AUDIUS_REMOTE_DEV_HOST=localhost
 
+# pipenv
+export PIPENV_VENV_IN_PROJECT=1
+
 
 # cd up to n dirs
 # using:  cd.. 10   cd.. dir
@@ -133,3 +136,4 @@ function cd_up() {
   esac
 }
 alias 'cd..'='cd_up'                                # can not name function 'cd..'
+
