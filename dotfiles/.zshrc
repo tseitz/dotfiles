@@ -115,14 +115,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-
-# audius
-export AUDIUS_REMOTE_DEV_HOST=localhost
-
-# pipenv
-export PIPENV_VENV_IN_PROJECT=1
-
-
 # cd up to n dirs
 # using:  cd.. 10   cd.. dir
 function cd_up() {
@@ -137,3 +129,8 @@ function cd_up() {
 }
 alias 'cd..'='cd_up'                                # can not name function 'cd..'
 
+# audius
+export AUDIUS_REMOTE_DEV_HOST=localhost
+
+# pipenv
+export PIPENV_VENV_IN_PROJECT=1
