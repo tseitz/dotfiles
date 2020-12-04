@@ -106,6 +106,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ls="ls -al --color=auto"
 alias open="nautilus"
+alias hl="heroku logs --tail --source app"
 
 # Remove % on hyper term startup (not in use atm)
 unsetopt PROMPT_SP
