@@ -107,6 +107,7 @@ source $ZSH/oh-my-zsh.sh
 alias ls="ls -al --color=auto"
 alias open="nautilus"
 alias hl="heroku logs --tail --source app"
+alias hlbal='heroku logs -n 10000000 --source app | grep "Balance"'
 
 # Remove % on hyper term startup (not in use atm)
 unsetopt PROMPT_SP
