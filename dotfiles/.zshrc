@@ -102,12 +102,11 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ls="ls -al --color=auto"
 alias open="nautilus"
 alias hl="heroku logs --tail --source app"
 alias hlbal='heroku logs -n 10000000 --source app | grep "Total:"'
+alias rmouse='killall imwheel && imwheel -b "4 5"'
 
 # Remove % on hyper term startup (not in use atm)
 unsetopt PROMPT_SP
