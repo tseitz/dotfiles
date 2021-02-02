@@ -105,6 +105,7 @@ source $ZSH/oh-my-zsh.sh
 alias ls="ls -al --color=auto"
 alias open="nautilus"
 alias hl="heroku logs --tail --source app"
+alias hll="heroku logs -n 10000000 --source app"
 alias hlbal='heroku logs -n 10000000 --source app | grep "Total:"'
 alias rmouse='killall imwheel && imwheel -b "4 5"'
 
