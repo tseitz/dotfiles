@@ -1,7 +1,10 @@
 # import private env variables
 # parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 # TODO: Fix this, should be dynamic but haven't figured out reading path from symlink
-dotfiles_path="/home/tseitz/t-configs/dotfiles"
+# dotfiles_path="/home/tseitz/t-configs/dotfiles"
+ROOT="/Users/tseitz"
+
+dotfiles_path="$ROOT/t-configs/dotfiles"
 
 source $dotfiles_path/.zshrc-env-vars
 
@@ -9,7 +12,7 @@ source $dotfiles_path/.zshrc-env-vars
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/tseitz/.oh-my-zsh"
+export ZSH="$ROOT/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -75,7 +78,7 @@ ZSH_THEME="spaceship"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions)
+plugins=(git colored-man-pages zsh-syntax-highlighting zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -102,9 +105,9 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias ls="ls -al --color=auto"
+alias ls="ls -al"
 alias open="nautilus"
-alias hl="heroku logs --tail --source app"
+alias hl="heroku logs --tail --app trading-view-webhook"
 alias hll="heroku logs -n 10000000 --source app"
 alias hlbal='heroku logs -n 10000000 --source app | grep "Total:"'
 alias rmouse='killall imwheel && imwheel -b "4 5"'
