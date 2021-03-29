@@ -107,9 +107,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 alias ls="ls -al"
 alias open="nautilus"
-alias hl="heroku logs --tail --app trading-view-webhook"
-alias hll="heroku logs -n 10000000 --source app"
-alias hlbal='heroku logs -n 10000000 --source app | grep "Total:"'
+alias hl="heroku logs --tail --app trading-view-webhook --source app"
+alias hll="heroku logs -n 10000000 --source app --app trading-view-webhook"
+alias hlbal='heroku logs -n 10000000 --app trading-view-webhook --source app | grep "Total:"'
 alias rmouse='killall imwheel && imwheel -b "4 5"'
 
 # Remove % on hyper term startup (not in use atm)
