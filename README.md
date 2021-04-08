@@ -1,1 +1,1 @@
-This repo syncs my configs and prettifiers for my personal workstations :)
+This repo syncs my configs and base files for my personal setup
