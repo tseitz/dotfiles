@@ -104,13 +104,19 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
+# linux
 alias ls="ls -al"
 alias open="nautilus"
+alias rmouse='killall imwheel && imwheel -b "4 5"'
+
+# mac
+alias mouseaccel='defaults write -g com.apple.mouse.scaling -1'
+alias trackaccel='defaults write -g com.apple.trackpad.scaling -1'
+
+# heroku
 alias hl="heroku logs --tail --app trading-view-webhook --source app"
 alias hll="heroku logs -n 10000000 --source app --app trading-view-webhook"
 alias hlbal='heroku logs -n 10000000 --app trading-view-webhook --source app | grep "Total:"'
-alias rmouse='killall imwheel && imwheel -b "4 5"'
 
 # Remove % on hyper term startup (not in use atm)
 unsetopt PROMPT_SP
