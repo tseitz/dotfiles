@@ -2,7 +2,7 @@
 # parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 # TODO: Fix this, should be dynamic but haven't figured out reading path from symlink
 # dotfiles_path="/home/tseitz/t-configs/dotfiles"
-ROOT="/Users/tseitz"
+ROOT="/Users/${USER}"
 
 dotfiles_path="$ROOT/t-configs/dotfiles"
 
@@ -10,6 +10,9 @@ source $dotfiles_path/.zshrc-env-vars
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# reset PATH to defaults
+# export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 
 # Path to your oh-my-zsh installation.
 export ZSH="$ROOT/.oh-my-zsh"
@@ -104,15 +107,21 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# linux
+
+# unix
 export LS_COLORS="di=1;36:ln=35:so=32:pi=33:ex=1;31:bd=34;46:cd=36;43:su=37;41:sg=30;46:tw=30;42:ow=37;43"
 alias lsa="ls -al"
+
+# linux
 alias open="nautilus"
 alias rmouse='killall imwheel && imwheel -b "4 5"'
 
 # mac
-alias mouseaccel='defaults write -g com.apple.mouse.scaling -1'
-alias trackaccel='defaults write -g com.apple.trackpad.scaling -1'
+# alias mouseaccel='defaults write -g com.apple.mouse.scaling -1'
+# alias trackaccel='defaults write -g com.apple.trackpad.scaling -1'
+alias zshconf='code ~/.zshrc'
+alias zshre='source ~/.zshrc; clear'
+alias brewup='brew update; brew upgrade; brew cleanup; brew doctor'
 alias zshre='source ~/.zshrc'
 alias zshconf='code ~/.zshrc'
 
@@ -125,12 +134,11 @@ alias hlbal='heroku logs -n 10000000 --app trading-view-webhook --source app | g
 alias ganache-up="ganache-cli -h 0.0.0.0"
 
 # Remove % on hyper term startup (not in use atm)
-unsetopt PROMPT_SP
+# unsetopt PROMPT_SP
 
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# work
+alias cdr="cd ~/Code/cdr-poc"
+alias cdrapp="cd ~/Code/cdr-poc/cdr/app"
 
 # cd up to n dirs
 # using:  cd.. 10   cd.. dir
@@ -151,24 +159,46 @@ export AUDIUS_REMOTE_DEV_HOST=localhost
 
 # pipenv
 export PIPENV_VENV_IN_PROJECT=1
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
 
 # >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/tseitz/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/tseitz/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/tseitz/opt/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/tseitz/opt/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
+# # !! Contents within this block are managed by 'conda init' !!
+# __conda_setup="$('/Users/tseitz/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/Users/tseitz/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+#         . "/Users/tseitz/opt/anaconda3/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/Users/tseitz/opt/anaconda3/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
 # <<< conda initialize <<<
 
+
+# pyenv
+# export PATH="$HOME/.pyenv/bin:$PATH"
+# export PATH="/usr/local/bin:$PATH"
+
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib"
+export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include"
+
+# PYTHON_BIN_PATH="$(python3 -m site --user-base)/bin"
+# export PATH="$PATH:$PYTHON_BIN_PATH"
+
+# pipenv workaround for macos (https://github.com/pypa/pipenv/issues/4576)
+export SYSTEM_VERSION_COMPAT=1
+
+# oracle
+export ORACLE_HOME="/Users/${USER}/Downloads"
+export DYLD_LIBRARY_PATH="${ORACLE_HOME}/instantclient_19_8"
+export TNS_ADMIN="${ORACLE_HOME}/instantclient_19_8/network/admin"
+export CLASSPATH="$CLASSPATH:$ORACLE_HOME"
+export PATH="${ORACLE_HOME}/instantclient_19_8:$PATH"
+
+# vs code
+# export PATH="${PATH}:/usr/local/share/dotnet:~/.dotnet/tools"
+
+# /Users/seitztegan/Downloads/instantclient_19_8:/Users/seitztegan/.pyenv/plugins/pyenv-virtualenv/shims:/Users/seitztegan/.pyenv/bin:/Users/seitztegan/Downloads/instantclient_19_8:/Users/seitztegan/.pyenv/plugins/pyenv-virtualenv/shims:/usr/local/bin:/Users/seitztegan/.pyenv/bin:/Users/seitztegan/.pyenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Users/seitztegan/.local/bin:/Users/seitztegan/.local/bin
