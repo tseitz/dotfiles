@@ -105,18 +105,24 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # linux
-alias ls="ls -al"
+export LS_COLORS="di=1;36:ln=35:so=32:pi=33:ex=1;31:bd=34;46:cd=36;43:su=37;41:sg=30;46:tw=30;42:ow=37;43"
+alias lsa="ls -al"
 alias open="nautilus"
 alias rmouse='killall imwheel && imwheel -b "4 5"'
 
 # mac
 alias mouseaccel='defaults write -g com.apple.mouse.scaling -1'
 alias trackaccel='defaults write -g com.apple.trackpad.scaling -1'
+alias zshre='source ~/.zshrc'
+alias zshconf='code ~/.zshrc'
 
 # heroku
 alias hl="heroku logs --tail --app trading-view-webhook --source app"
 alias hll="heroku logs -n 10000000 --source app --app trading-view-webhook"
 alias hlbal='heroku logs -n 10000000 --app trading-view-webhook --source app | grep "Total:"'
+
+# ethereum
+alias ganache-up="ganache-cli -h 0.0.0.0"
 
 # Remove % on hyper term startup (not in use atm)
 unsetopt PROMPT_SP
