@@ -126,7 +126,8 @@ alias zshre='source ~/.zshrc'
 alias zshconf='code ~/.zshrc'
 
 # heroku
-alias hl="heroku logs --tail --app trading-view-webhook --source app"
+alias hltv="heroku logs --tail --app trading-view-webhook --source app"
+alias hlrb="heroku logs --tail --app rarity-game-bot --source app"
 alias hll="heroku logs -n 10000000 --source app --app trading-view-webhook"
 alias hlbal='heroku logs -n 10000000 --app trading-view-webhook --source app | grep "Total:"'
 
@@ -181,7 +182,7 @@ export PIPENV_VENV_IN_PROJECT=1
 # export PATH="/usr/local/bin:$PATH"
 
 eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+# eval "$(pyenv virtualenv-init -)"
 export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib"
 export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include"
 
