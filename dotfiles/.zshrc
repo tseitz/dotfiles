@@ -1,3 +1,5 @@
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
 # import private env variables
 # parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 # TODO: Fix this, should be dynamic but haven't figured out reading path from symlink
@@ -119,11 +121,11 @@ alias rmouse='killall imwheel && imwheel -b "4 5"'
 # mac
 # alias mouseaccel='defaults write -g com.apple.mouse.scaling -1'
 # alias trackaccel='defaults write -g com.apple.trackpad.scaling -1'
-alias zshconf='code ~/.zshrc'
-alias zshre='source ~/.zshrc; clear'
-alias brewup='brew update; brew upgrade; brew cleanup; brew doctor'
-alias zshre='source ~/.zshrc'
-alias zshconf='code ~/.zshrc'
+alias zshconf="code ~/.zshrc"
+alias zshre="source ~/.zshrc; clear"
+alias brewup="brew update; brew upgrade; brew cleanup; brew doctor"
+alias zshvars="code ${dotfiles_path}/.zshrc-env-vars"
+alias codeconf="code $ROOT/t-configs"
 
 # heroku
 alias hltv="heroku logs --tail --app trading-view-webhook --source app"
@@ -193,7 +195,7 @@ export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include"
 export SYSTEM_VERSION_COMPAT=1
 
 # oracle
-export ORACLE_HOME="/Users/${USER}/Downloads"
+export ORACLE_HOME="$ROOT/Downloads"
 export DYLD_LIBRARY_PATH="${ORACLE_HOME}/instantclient_19_8"
 export TNS_ADMIN="${ORACLE_HOME}/instantclient_19_8/network/admin"
 export CLASSPATH="$CLASSPATH:$ORACLE_HOME"
@@ -203,3 +205,18 @@ export PATH="${ORACLE_HOME}/instantclient_19_8:$PATH"
 # export PATH="${PATH}:/usr/local/share/dotnet:~/.dotnet/tools"
 
 # /Users/seitztegan/Downloads/instantclient_19_8:/Users/seitztegan/.pyenv/plugins/pyenv-virtualenv/shims:/Users/seitztegan/.pyenv/bin:/Users/seitztegan/Downloads/instantclient_19_8:/Users/seitztegan/.pyenv/plugins/pyenv-virtualenv/shims:/usr/local/bin:/Users/seitztegan/.pyenv/bin:/Users/seitztegan/.pyenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Users/seitztegan/.local/bin:/Users/seitztegan/.local/bin
+
+
+# Created by `pipx` on 2022-01-28 03:19:33
+export PATH="$PATH:$ROOT/Library/Python/3.10/bin"
+
+# Created by `pipx` on 2022-01-28 03:19:34
+export PATH="$PATH:$ROOT/.local/bin"
+
+export PNPM_HOME="$ROOT/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+
+export PATH="$PATH:$ROOT/.foundry/bin"
+
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
