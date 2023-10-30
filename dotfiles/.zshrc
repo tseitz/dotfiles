@@ -1,5 +1,5 @@
 # Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 # import private env variables
 # parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 # TODO: Fix this, should be dynamic but haven't figured out reading path from symlink
@@ -83,7 +83,7 @@ ZSH_THEME="spaceship"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colored-man-pages zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git deno colored-man-pages zsh-syntax-highlighting zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -121,27 +121,25 @@ alias rmouse='killall imwheel && imwheel -b "4 5"'
 # mac
 # alias mouseaccel='defaults write -g com.apple.mouse.scaling -1'
 # alias trackaccel='defaults write -g com.apple.trackpad.scaling -1'
-alias zshconf="code ~/.zshrc"
+alias zshconf="nvim ~/.zshrc"
 alias zshre="source ~/.zshrc; clear"
 alias brewup="brew update; brew upgrade; brew cleanup; brew doctor"
-alias zshvars="code ${dotfiles_path}/.zshrc-env-vars"
+alias zshvars="nvim ${dotfiles_path}/.zshrc-env-vars"
 alias codeconf="code $ROOT/t-configs"
+alias ytdlconf="nvim ~/.config/youtube-dl/config"
+alias cdcode="cd ~/code"
 
 # heroku
-alias hltv="heroku logs --tail --app trading-view-webhook --source app"
-alias hlrb="heroku logs --tail --app rarity-game-bot --source app"
-alias hll="heroku logs -n 10000000 --source app --app trading-view-webhook"
-alias hlbal='heroku logs -n 10000000 --app trading-view-webhook --source app | grep "Total:"'
+# alias hltv="heroku logs --tail --app trading-view-webhook --source app"
+# alias hlrb="heroku logs --tail --app rarity-game-bot --source app"
+# alias hll="heroku logs -n 10000000 --source app --app trading-view-webhook"
+# alias hlbal='heroku logs -n 10000000 --app trading-view-webhook --source app | grep "Total:"'
 
 # ethereum
-alias ganache-up="ganache-cli -h 0.0.0.0"
+# alias ganache-up="ganache-cli -h 0.0.0.0"
 
 # Remove % on hyper term startup (not in use atm)
 # unsetopt PROMPT_SP
-
-# work
-alias cdr="cd ~/Code/cdr-poc"
-alias cdrapp="cd ~/Code/cdr-poc/cdr/app"
 
 # cd up to n dirs
 # using:  cd.. 10   cd.. dir
@@ -163,30 +161,21 @@ export AUDIUS_REMOTE_DEV_HOST=localhost
 # pipenv
 export PIPENV_VENV_IN_PROJECT=1
 
-# >>> conda initialize >>>
-# # !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$('/Users/tseitz/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-# if [ $? -eq 0 ]; then
-#     eval "$__conda_setup"
-# else
-#     if [ -f "/Users/tseitz/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-#         . "/Users/tseitz/opt/anaconda3/etc/profile.d/conda.sh"
-#     else
-#         export PATH="/Users/tseitz/opt/anaconda3/bin:$PATH"
-#     fi
-# fi
-# unset __conda_setup
-# <<< conda initialize <<<
-
-
 # pyenv
 # export PATH="$HOME/.pyenv/bin:$PATH"
 # export PATH="/usr/local/bin:$PATH"
 
-eval "$(pyenv init -)"
+# eval "$(pyenv init -)"
 # eval "$(pyenv virtualenv-init -)"
-export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib"
-export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include"
+# export LDFLAGS="-L$(/opt/homebrew/bin/brew --prefix zlib)/lib -L$(/opt/homebrew/bin/brew --prefix bzip2)/lib -L$(/opt/homebrew/bin/brew --prefix openblas)/lib -L/opt/homebrew/opt/llvm@12/lib -L$(/opt/homebrew/bin/brew --prefix openssl)/lib -L$(/opt/homebrew/bin/brew --prefix re2)/lib -L/opt/homebrew/opt/libomp/lib"
+# export CPPFLAGS="-I$(/opt/homebrew/bin/brew --prefix zlib)/include -I$(/opt/homebrew/bin/brew --prefix bzip2)/include -I$(/opt/homebrew/bin/brew --prefix openblas)/include -I/opt/homebrew/opt/llvm@12/include -I$(/opt/homebrew/bin/brew --prefix openssl)/include -I$(/opt/homebrew/bin/brew --prefix re2)/include -I/opt/homebrew/opt/libomp/include"
+
+# export PKG_CONFIG_PATH="/opt/homebrew/opt/openblas/lib/pkgconfig"
+#
+# export GRPC_BUILD_WITH_BORING_SSL_ASM="" 
+# export GRPC_PYTHON_BUILD_SYSTEM_RE2=1 
+# export GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=1 
+# export GRPC_PYTHON_BUILD_SYSTEM_ZLIB=1 
 
 # PYTHON_BIN_PATH="$(python3 -m site --user-base)/bin"
 # export PATH="$PATH:$PYTHON_BIN_PATH"
@@ -195,28 +184,33 @@ export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include"
 export SYSTEM_VERSION_COMPAT=1
 
 # oracle
-export ORACLE_HOME="$ROOT/Downloads"
-export DYLD_LIBRARY_PATH="${ORACLE_HOME}/instantclient_19_8"
-export TNS_ADMIN="${ORACLE_HOME}/instantclient_19_8/network/admin"
-export CLASSPATH="$CLASSPATH:$ORACLE_HOME"
-export PATH="${ORACLE_HOME}/instantclient_19_8:$PATH"
+# export ORACLE_HOME="$ROOT/Downloads"
+# export DYLD_LIBRARY_PATH="${ORACLE_HOME}/instantclient_19_8"
+# export TNS_ADMIN="${ORACLE_HOME}/instantclient_19_8/network/admin"
+# export CLASSPATH="$CLASSPATH:$ORACLE_HOME"
+# export PATH="${ORACLE_HOME}/instantclient_19_8:$PATH"
 
 # vs code
 # export PATH="${PATH}:/usr/local/share/dotnet:~/.dotnet/tools"
 
 # /Users/seitztegan/Downloads/instantclient_19_8:/Users/seitztegan/.pyenv/plugins/pyenv-virtualenv/shims:/Users/seitztegan/.pyenv/bin:/Users/seitztegan/Downloads/instantclient_19_8:/Users/seitztegan/.pyenv/plugins/pyenv-virtualenv/shims:/usr/local/bin:/Users/seitztegan/.pyenv/bin:/Users/seitztegan/.pyenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Users/seitztegan/.local/bin:/Users/seitztegan/.local/bin
 
-
-# Created by `pipx` on 2022-01-28 03:19:33
-export PATH="$PATH:$ROOT/Library/Python/3.10/bin"
-
-# Created by `pipx` on 2022-01-28 03:19:34
 export PATH="$PATH:$ROOT/.local/bin"
 
-export PNPM_HOME="$ROOT/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH"
+# export PNPM_HOME="$ROOT/Library/pnpm"
+# export PATH="$PNPM_HOME:$PATH"
 
-export PATH="$PATH:$ROOT/.foundry/bin"
+# export PATH="$PATH:$ROOT/.foundry/bin"
+# export PATH="/opt/homebrew/opt/python@3.10/libexec/bin:~/Library/Python/3.9/bin:/opt/homebrew/opt/llvm@12/bin:$PATH"
+
+# export PATH="/Users/tseitz/.local/bin:$PATH"
+
+# bun completions
+[ -s "/Users/tseitz/.bun/_bun" ] && source "/Users/tseitz/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
